@@ -3,11 +3,15 @@
     <head>
         <title>jQuery+RequireJS Sample Page</title>
         <!-- This is a special version of jQuery with RequireJS built-in -->
+        <link rel="stylesheet" href="css/jquery-ui-1-8-16-custom.css" type="text/css" media="screen" charset="utf-8">
     </head>
     <body>
         <h1>jQuery+RequireJS Sample Page</h1>
         <p>Look at source or inspect the DOM to see how it works.</p>
         <script data-main="scripts/main" src="scripts/require-jquery.js"></script>
-        <div id="customer-picker"></div>
+        <a id="choose-customer-button">choose customer</a>
+        <div id="customer-picker">
+            <div class="customer-list"></div>
+        </div>
     </body>
 </html>

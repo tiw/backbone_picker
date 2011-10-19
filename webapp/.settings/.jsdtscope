@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="modules/payment/models/|modules/customer/collections/|modules/customer/views/address/|modules/payment/views/debit/|modules/customer/views/customer/|modules/orderItem/views/item/|lib/|modules/orderItem/collections/|modules/orderItem/models/|modules/customer/models/" kind="src" path="scripts"/>
+	<classpathentry kind="src" path="scripts/lib"/>
+	<classpathentry kind="src" path="scripts/modules/customer/collections"/>
+	<classpathentry kind="src" path="scripts/modules/customer/models"/>
+	<classpathentry kind="src" path="scripts/modules/customer/views/address"/>
+	<classpathentry kind="src" path="scripts/modules/customer/views/customer"/>
+	<classpathentry kind="src" path="scripts/modules/orderItem/collections"/>
+	<classpathentry kind="src" path="scripts/modules/orderItem/models"/>
+	<classpathentry kind="src" path="scripts/modules/orderItem/views/item"/>
+	<classpathentry kind="src" path="scripts/modules/payment/models"/>
+	<classpathentry kind="src" path="scripts/modules/payment/views/debit"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

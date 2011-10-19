@@ -3,6 +3,9 @@ require(["jquery", 'modules/customer/models/customer', 'modules/customer/views/c
     $(function() {
         var customer = new Customer();
         var customerPickerView = new CustomerPickerView({customer: customer});
-        customerPickerView.el.dialog('open');
+        $('#choose-customer-button').click(function(){
+            customerPickerView.el.dialog('open');
+            customerPickerView.customer.bind('change', function(){console.log(customerPickerView.customer);});
+        });
     });
 });

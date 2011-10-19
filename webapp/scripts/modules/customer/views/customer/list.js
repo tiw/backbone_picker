@@ -104,6 +104,12 @@ define(['jquery', 'order!underscore', 'order!backbone',
                 });
             }
             this.addAll();
+        },
+        openDialog: function() {
+            this.el.dialog('open');
+        },
+        closeDialog: function() {
+            this.el.dialog('close');
         }
     });
 

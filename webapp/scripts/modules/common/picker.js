@@ -10,12 +10,7 @@
  *     customerPickerView.openDialog();
  *     customerPickerView.customer.bind('change', function(){console.log(customerPickerView.customer);});
  */
-//'jquery', 'order!underscore', 'order!backbone',
-        // these as parameter
-//       'modules/customer/models/customerCollection',
-//       'text!templates/customer/single-line-customer.html',
-//       'text!templates/customer/customer-picker.html',
-//       'lib/jquery-ui-1-8-16-custom-min'
+
 define([], function(){
     return function($, a, b, Collection, singleLineTemplate, pickerTemplate, pickerId) {
         

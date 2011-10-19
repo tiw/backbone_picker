@@ -4,10 +4,11 @@ require(["jquery", 'modules/customer/models/customer', 'modules/customer/views/c
         var customer = new Customer();
         var customerPickerView;
         $('#choose-customer-button').click(function(){
-            customerPickerView = customerPickerView || new CustomerPickerView({customer: customer});
+            customerPickerView = customerPickerView || new CustomerPickerView({onChooseCustomer: function(c){
+                customer.set({id: c.get('id')});
+            }});
             customerPickerView.openDialog();
-            console.log('ll');
-            customerPickerView.customer.bind('change', function(){console.log(customerPickerView.customer);});
+            customer.bind('change', function(){console.log(customer);});
         });
     });
 });

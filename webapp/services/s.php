@@ -12,8 +12,8 @@ $customer2 = array(
     'customerNumber' => 1, 
     'email' => 'aa@bb.cc', 
     'dob'=>'12/12/12', 
-    'firstName' => 'Jack', 
-    'lastName' => 'Sparrow'
+    'firstName' => 'Tim', 
+    'lastName' => 'Cook'
 );
 $r = array();
 $r[] = $customer;

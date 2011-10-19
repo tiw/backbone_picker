@@ -47,13 +47,16 @@ define(['jquery', 'order!underscore', 'order!backbone',
             $('body').append(customerPicker);
             // set the el in initialize because the dom is not there at the very beginning.
             this.el = $('#customer-picker');
+            // the event hash is defined before we dynamiclly add dom element, so
+            // we have to call this again for event binding.
+            this.delegateEvents();
             this.el.dialog({
                 autoOpen: false,
                 height: 220,
                 width: 800,
                 modal: true
             });
-            this.customer = params.customer;
+            this.onChooseCustomer = params.onChooseCustomer;
             this.customers = new CustomerCollection();
             this.customers.bind('add', this.addOne, this);
             this.customers.bind('reset', this.addAll, this);
@@ -70,14 +73,13 @@ define(['jquery', 'order!underscore', 'order!backbone',
         },
         setCustomer: function() {
             var el = this.el;
-            var customer = this.customer;
             _.each(this.customers.models, function(model, index) {
                 if (model.get('selected')) {
-                    customer.set({id: model.get('id')});
+                    this.onChooseCustomer(model); 
                     model.set({'selected': false});
                     el.dialog('close');
                 }
-            });
+            }, this);
         },
         addOne: function(customer) {
             if (customer.get('isWanted')) {
@@ -88,7 +90,7 @@ define(['jquery', 'order!underscore', 'order!backbone',
 
         },
         addAll: function() {
-            this.$('#customer-list').empty();
+            this.$('.customer-list').empty();
             this.customers.each(this.addOne);
         },
         //render: function() {
@@ -96,9 +98,9 @@ define(['jquery', 'order!underscore', 'order!backbone',
             //return this;
         //},
         events: {
-            'keyup .name-filter' : 'filterProductByName'
+            'keyup .name-filter' : 'filterCustomerByName'
         },
-        filterProductByName: function(event) {
+        filterCustomerByName: function(event) {
             if (event.keyCode == 13) {
                 var filterText = $('.name-filter', $(this.el)).val();
                 _.each(this.customers.models, function(model, index) {

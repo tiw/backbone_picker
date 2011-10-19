@@ -1,13 +1,13 @@
 /**
  * usage
- * new CustomerPickerView({customer: customer, customers: customers})
- * customer is an object which will save the picked customer.
+ * new CustomerPickerView({onChooseCustomer: function(c){});
  * 
  * e.g.
- *     customerPickerView = customerPickerView || new CustomerPickerView({customer: customer});
+ *     customerPickerView = customerPickerView || new CustomerPickerView({onChooseCustomer: function(c){
+ *              customer.set({id: c.get('id')});
+ *          }});
  *     customerPickerView.openDialog();
  *     customerPickerView.customer.bind('change', function(){console.log(customerPickerView.customer);});
- * @todo: using callback to get the selected customer is better, needs refactoring.
  */
 define(['jquery', 'order!underscore', 'order!backbone',
        'modules/customer/models/customerCollection',

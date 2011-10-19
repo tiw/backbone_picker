@@ -89,12 +89,12 @@ define([], function(){
                 if (model.get('isWanted')) {
                     var view = new LineView({model: model});
                     var html = view.render().el;
-                    this.$('.list').append(html);
+                    $('.list', this.el).append(html);
                 }
             },
             addAll: function() {
                 this.$('.list').empty();
-                this.collection.each(this.addOne);
+                this.collection.each(this.addOne, this);
             },
             //render: function() {
                 //$(this.el).html(this.template(this.model.toJSON()));

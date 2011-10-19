@@ -2,9 +2,11 @@ require(["jquery", 'modules/customer/models/customer', 'modules/customer/views/c
     //the jquery.alpha.js and jquery.beta.js plugins have been loaded.
     $(function() {
         var customer = new Customer();
-        var customerPickerView = new CustomerPickerView({customer: customer});
+        var customerPickerView;
         $('#choose-customer-button').click(function(){
-            customerPickerView.el.dialog('open');
+            customerPickerView = customerPickerView || new CustomerPickerView({customer: customer});
+            customerPickerView.openDialog();
+            console.log('ll');
             customerPickerView.customer.bind('change', function(){console.log(customerPickerView.customer);});
         });
     });

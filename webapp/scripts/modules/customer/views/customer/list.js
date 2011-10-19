@@ -2,13 +2,19 @@
  * usage
  * new CustomerPickerView({customer: customer, customers: customers})
  * customer is an object which will save the picked customer.
+ * 
+ * e.g.
+ *     customerPickerView = customerPickerView || new CustomerPickerView({customer: customer});
+ *     customerPickerView.openDialog();
+ *     customerPickerView.customer.bind('change', function(){console.log(customerPickerView.customer);});
  * @todo: using callback to get the selected customer is better, needs refactoring.
  */
 define(['jquery', 'order!underscore', 'order!backbone',
        'modules/customer/models/customerCollection',
        'text!templates/customer/single-line-customer.html',
+       'text!templates/customer/customer-picker.html',
        'lib/jquery-ui-1-8-16-custom-min'
-], function($, a, b, CustomerCollection, singleLineCustomerTemplate) {
+], function($, a, b, CustomerCollection, singleLineCustomerTemplate, customerPicker) {
     var CustomerLineView = Backbone.View.extend({
         tagName: 'tr',
         className: 'single-customer-line',
@@ -31,14 +37,16 @@ define(['jquery', 'order!underscore', 'order!backbone',
     });
 
     var CustomerPickerView = Backbone.View.extend({
-        el: $('#customer-picker'),
-        tagName: '',
+        tagName: 'div',
         className: 'customer-picker',
-
         /**
          * initialize 
          */
         initialize: function(params) {
+            // add dialog dom to body
+            $('body').append(customerPicker);
+            // set the el in initialize because the dom is not there at the very beginning.
+            this.el = $('#customer-picker');
             this.el.dialog({
                 autoOpen: false,
                 height: 220,
